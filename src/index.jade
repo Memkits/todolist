@@ -1,0 +1,32 @@
+
+doctype 5
+html
+  head
+    title Todolist
+    meta(charset="utf-8")
+    link(rel="stylesheet",href="page.css")
+    //- script(src="http://192.168.1.19:7777/doodle.js")
+    script(src="../../lilyturf/page/lilyturf.js")
+    script(src="handle.js")
+  body
+    #outline You have 0 task left
+    #book
+      #todo
+      #tags
+        #wait wait
+        #done done
+        #all all
+        #add add
+        input#search(placeholder="search")
+    #editor
+      .line
+        span title
+        input#title(placeholder="title")
+      .line
+        span tag
+        input#tag(placeholder="tag")
+      .line
+        span content
+        textarea#content(placeholder="content")
+      button#save save
+      button#cancel cancel

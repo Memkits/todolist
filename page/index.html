@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todolist</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="page.css">
+    <script src="../../lilyturf/page/lilyturf.js"></script>
+    <script src="handle.js"></script>
+  </head>
+  <body>
+    <div id="outline">You have 0 task left</div>
+    <div id="book">
+      <div id="todo"></div>
+      <div id="tags">
+        <div id="wait">wait</div>
+        <div id="done">done</div>
+        <div id="all">all</div>
+        <div id="add">add</div>
+        <input id="search" placeholder="search">
+      </div>
+    </div>
+    <div id="editor">
+      <div class="line"><span>title</span>
+        <input id="title" placeholder="title">
+      </div>
+      <div class="line"><span>tag</span>
+        <input id="tag" placeholder="tag">
+      </div>
+      <div class="line"><span>content</span>
+        <textarea id="content" placeholder="content"></textarea>
+      </div>
+      <button id="save">save</button>
+      <button id="cancel">cancel</button>
+    </div>
+  </body>
+</html>
