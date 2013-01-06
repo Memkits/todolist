@@ -62,10 +62,10 @@ textarea, input, button
     height 300px
     resize vertical
 
-  #save:active
+  button:active
     background white
-  #save:focus
-    background hsl(0,0,90)
+  button:focus, input:focus, textarea:focus
+    box-shadow 0px 0px 8px hsl(0,0,60)
 
 #book
   display -webkit-flex
@@ -75,10 +75,16 @@ textarea, input, button
     width 24%
     color black
 
-    &>div
+    button
       background hsl(0,0,90)
+      display block
+      width 200px
       margin 4px 0px
+      text-align left
       padding 4px 8px
+
+      &:focus
+        box-shadow 0px 0px 8px hsl(0,0,70)
 
   #todo
     min-height 20px

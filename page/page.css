@@ -63,11 +63,13 @@ button {
   height: 300px;
   resize: vertical;
 }
-#editor #save:active {
+#editor button:active {
   background: #fff;
 }
-#editor #save:focus {
-  background: #e6e6e6;
+#editor button:focus,
+#editor input:focus,
+#editor textarea:focus {
+  box-shadow: 0px 0px 8px #999;
 }
 #book {
   display: -webkit-flex;
@@ -77,10 +79,16 @@ button {
   width: 24%;
   color: #000;
 }
-#book #tags>div {
+#book #tags button {
   background: #e6e6e6;
+  display: block;
+  width: 200px;
   margin: 4px 0px;
+  text-align: left;
   padding: 4px 8px;
+}
+#book #tags button:focus {
+  box-shadow: 0px 0px 8px #b3b3b3;
 }
 #book #todo {
   min-height: 20px;

@@ -44,7 +44,13 @@ update = function() {
       count += 1;
     }
   }
-  (q("#outline")).innerText = "You have " + count + " tasks left";
+  if (count > 20) {
+    (q("#outline")).innerText = "As many as " + count + " tasks here";
+  } else if (count > 1) {
+    (q("#outline")).innerText = "You have " + count + " tasks left";
+  } else {
+    (q("#outline")).innerText = "Last " + count + " tasks";
+  }
   return (q("title")).innerText = "" + count + " left";
 };
 
@@ -162,6 +168,11 @@ window.onload = function() {
   save.onclick = function() {
     return save_task();
   };
+  save.onkeydown = function(key) {
+    if (key.keyCode === 13) {
+      return save.click();
+    }
+  };
   all.onclick = function() {
     view = "all";
     render(/(?:)/);
@@ -174,10 +185,19 @@ window.onload = function() {
   };
   add.onclick = function() {
     prepare = get_time();
-    return editor.style.left = "0px";
+    title.value = "";
+    tag.value = "";
+    content.value = "";
+    editor.style.left = "0px";
+    return (q("#title")).focus();
   };
   cancel.onclick = function() {
     return editor.style.left = "-540px";
+  };
+  cancel.onkeydown = function(key) {
+    if (key.keyCode === 13) {
+      return cancel.click();
+    }
   };
   wait.onclick = function() {
     view = "wait";

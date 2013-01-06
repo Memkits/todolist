@@ -23,7 +23,12 @@ update = ->
   for key, value of tasks
     if value.status.match /wait/
       count += 1
-  (q "#outline").innerText = "You have #{count} tasks left"
+  if count > 20
+    (q "#outline").innerText = "As many as #{count} tasks here"
+  else if count > 1
+    (q "#outline").innerText = "You have #{count} tasks left"
+  else
+    (q "#outline").innerText = "Last #{count} tasks"
   (q "title").innerText = "#{count} left"
 
 load_task = ->
@@ -118,6 +123,8 @@ window.onload = ->
 
   save.onclick = ->
     save_task()
+  save.onkeydown = (key) ->
+    if key.keyCode is 13 then save.click()
   all.onclick = ->
     view = "all"
     render //
@@ -128,9 +135,15 @@ window.onload = ->
     editor.style.left = "-540px"
   add.onclick = ->
     prepare = get_time()
+    title.value = ""
+    tag.value = ""
+    content.value = ""
     editor.style.left = "0px"
+    (q "#title").focus()
   cancel.onclick = ->
     editor.style.left = "-540px"
+  cancel.onkeydown = (key) ->
+    if key.keyCode is 13 then cancel.click()
   wait.onclick = ->
     view = "wait"
     render /wait/
