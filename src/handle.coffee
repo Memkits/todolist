@@ -27,8 +27,10 @@ update = ->
     (q "#outline").innerText = "As many as #{count} tasks here"
   else if count > 1
     (q "#outline").innerText = "You have #{count} tasks left"
-  else
+  else if count is 1
     (q "#outline").innerText = "Last #{count} tasks"
+  else
+    (q "#outline").innerText = "Great!"
   (q "title").innerText = "#{count} left"
 
 load_task = ->
