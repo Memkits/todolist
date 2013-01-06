@@ -5,10 +5,12 @@
 html {
   background: #f0f0f0;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 body {
   margin: 0px auto;
   width: 1000px;
+  height: 100%;
   background: #f7f7f7;
   min-height: 200px;
   font-family: Marcellus;
@@ -90,13 +92,17 @@ button {
 #book #tags button:focus {
   box-shadow: 0px 0px 8px #b3b3b3;
 }
+#book #tags .viewing {
+  background: #d1d1fa;
+}
 #book #todo {
   min-height: 20px;
   width: 76%;
+  padding-bottom: 200px;
 }
 #book #todo .task {
   margin: 8px 0px;
-  padding: 6px 10px;
+  padding: 6px 20px;
 }
 #book #todo .task .title {
   font-size: 20px;

@@ -52,6 +52,12 @@ make_item = (data) ->
           @span class: "failed", (@text "failed")
         @span class: "detail", (@text "detail")
 
+viewing = (elem) ->
+  last = q ".viewing"
+  if last?
+    last.className = ""
+  elem.className = "viewing"
+
 window.onload = ->
   load_task()
   todo = q "#todo"
@@ -123,13 +129,13 @@ window.onload = ->
 
   save.onclick = ->
     save_task()
-  save.onkeydown = (key) ->
-    if key.keyCode is 13 then save.click()
   all.onclick = ->
+    viewing @
     view = "all"
     render //
     editor.style.left = "-540px"
   done.onclick = ->
+    viewing @
     view = "done"
     render /done/
     editor.style.left = "-540px"
@@ -142,9 +148,8 @@ window.onload = ->
     (q "#title").focus()
   cancel.onclick = ->
     editor.style.left = "-540px"
-  cancel.onkeydown = (key) ->
-    if key.keyCode is 13 then cancel.click()
   wait.onclick = ->
+    viewing @
     view = "wait"
     render /wait/
   search.addEventListener "input", ->
@@ -167,3 +172,4 @@ window.onload = ->
       id = elem.parentNode.parentNode.id
       prepare = get_time()
       edit_item tasks[id]
+      (q "#title").focus()

@@ -6,10 +6,12 @@
 html
   background hsl(0,0,94)
   overflow-x hidden
+  overflow-y scroll
 
 body
   margin 0px auto
   width 1000px
+  height 100%
   background hsl(0,0,97)
   min-height 200px
   font-family Marcellus
@@ -86,13 +88,17 @@ textarea, input, button
       &:focus
         box-shadow 0px 0px 8px hsl(0,0,70)
 
+    .viewing
+      background hsl(240,80,90)
+
   #todo
     min-height 20px
     width 76%
+    padding-bottom 200px
 
     .task
       margin 8px 0px
-      padding 6px 10px
+      padding 6px 20px
 
       .title
         font-size 20px
