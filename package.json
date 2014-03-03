@@ -1,0 +1,26 @@
+{
+  "name": "todolist",
+  "version": "0.0.1",
+  "description": "personal todo list of jiyinyiyong",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jiyinyiyong/todolist.git"
+  },
+  "author": "jiyinyiyong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiyinyiyong/todolist/issues"
+  },
+  "homepage": "https://github.com/jiyinyiyong/todolist",
+  "keywords": [
+    "todo",
+    "list"
+  ],
+  "dependencies": {
+    "vue": "~0.9.3"
+  }
+}
