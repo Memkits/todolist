@@ -1,0 +1,70 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+#app {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: Optima;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 100%;
+}
+
+#menu > div {
+    background: rgb(238, 238, 238);
+    color: rgb(109, 109, 109);
+    -webkit-transition-duration: 200ms;
+}
+#menu > div:hover {
+    background: white;
+    color: black;
+}
+
+#editor {}
+
+
+.mode-futures#menu {}
+.mode-futures #futures {
+    flex: 3;
+}
+.mode-futures #working, .mode-futures #history {
+    flex: 1;
+}
+
+.mode-working#menu {
+    height: 100%;
+}
+.mode-working #futures, .mode-working #history {
+    flex: 1;
+}
+.mode-working #working {
+    flex: 3;
+}
+
+.mode-history#menu {}
+.mode-history #futures, .mode-history #working {
+    flex: 1;
+}
+.mode-history #history {
+    flex: 3;
+}
+
+
+.cover {
+    padding: 10px;
+    cursor: pointer;
+}

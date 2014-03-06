@@ -21,6 +21,7 @@
     "list"
   ],
   "dependencies": {
-    "vue": "~0.9.3"
+    "vue": "~0.9.3",
+    "moment": "~2.5.1"
   }
 }

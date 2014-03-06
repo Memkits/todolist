@@ -1,10 +1,48 @@
 
-doctype 5
+doctype html
 html
   head
     title Todo List
     meta(charset='utf-8')
     link(rel='stylesheet', href='page/style.css')
     script(defer, src='./build/build.js')
-  body
-    p nothing yet
+  body#app
+    #menu(class='mode-{{mode}}')
+      #futures
+        .cover(v-on='click: switchFutures', v-show='isFutures')
+          .text
+            span Currently you have
+            span.count {{futuresLength}}
+            span tasks
+        .list(v-show='{{isFutures | oppsite}}')
+          .task(v-repeat='futures')
+            .title {{title}}
+      #working
+        .cover(v-on='click: switchWorking', v-show='isWorking')
+          .text
+            span Currently you have
+            span.count {{workingLength}}
+            span tasks
+          .button Add Task
+        .list(v-show='isWorking | oppsite')
+          .task(v-repeat='working')
+            .title {{title}}
+      #history(v-on='click: switchHistory', v-show='isHistory')
+        .cover
+          .text
+            span history length
+            span.count {{historyLength}}
+        .list(v-show='isHistory | oppsite')
+          .record(v-repeat='history')
+            .action {{action}}
+            .title {{title}}
+            .time {{finish}}
+    #editor(v-show='editing')
+      #overlay
+        #dialog
+          .inputing
+            input#title
+            input#content
+          .controls
+            #save save
+            #delete delete
