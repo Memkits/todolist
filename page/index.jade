@@ -23,8 +23,8 @@ html
             span Currently you have
             span.count {{workingLength}}
             span tasks
-          .button(v-on='click: addTask')
-            | Add Task
+          .button#add(v-on='click: createTask')
+            | +
         .list(v-show='isWorking')
           .task(v-repeat='working')
             .title {{title}}
@@ -39,11 +39,18 @@ html
             .title {{title}}
             .time {{finish}}
     #editor(v-show='editing')
-      #dialog
-        #action {{action}}
+      #dialog(class='action-{{action}}')
+        #action
+          span {{action}}
+          span#dismiss(v-on='click: dismiss') ✗
         #inputing
           input#title
           input#content
-        #controls
-          #save save
-          #delete delete
+        #add-control.controls(v-show='isEditing | oppsite')
+          #create-task.button(v-on='click: createTask')
+            | create
+        #edit-control.controls(v-show='isEditing')
+          #update-task.button(v-on='click: updateTask')
+            | update
+          #remove-task.button(v-on='click: removeTask')
+            | remove

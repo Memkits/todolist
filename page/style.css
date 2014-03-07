@@ -72,6 +72,13 @@ body {
     cursor: pointer;
     flex: 1;
 }
+#add {
+    font-size: 40px;
+    margin: 30px 40px;
+}
+#add:hover {
+    color: blue;
+}
 
 #overlay {}
 
@@ -85,6 +92,18 @@ body {
     justify-content: space-between;
 }
 
+#action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#dismiss {
+    cursor: pointer;
+}
+#dismiss:hover {
+    color: red;
+}
+
 #inputing {
     display: flex;
     flex-direction: column;
@@ -96,13 +115,13 @@ body {
     margin-bottom: 20px;
 }
 
-#controls {
+.controls {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
 
-#controls > div {
+.controls .button {
     width: 83px;
     text-align: center;
     background: rgb(211, 211, 255);
@@ -111,10 +130,10 @@ body {
     cursor: pointer;
     border-radius: 2px;
 }
-#controls > div:hover {
+.controls .button:hover {
     background: rgb(161, 161, 255);
 }
 
-#content #save {}
+.content #save {}
 
-#content #delete {}
+.content #delete {}
