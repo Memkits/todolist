@@ -9,30 +9,31 @@ html
   body#app
     #menu(class='mode-{{mode}}')
       #futures
-        .cover(v-on='click: switchFutures', v-show='isFutures')
+        .cover(v-on='click: switchFutures', v-show='isFutures | oppsite')
           .text
             span Currently you have
             span.count {{futuresLength}}
             span tasks
-        .list(v-show='{{isFutures | oppsite}}')
+        .list(v-show='isFutures')
           .task(v-repeat='futures')
             .title {{title}}
       #working
-        .cover(v-on='click: switchWorking', v-show='isWorking')
+        .cover(v-on='click: switchWorking', v-show='isWorking | oppsite')
           .text
             span Currently you have
             span.count {{workingLength}}
             span tasks
-          .button Add Task
-        .list(v-show='isWorking | oppsite')
+          .button(v-on='click: addTask')
+            | Add Task
+        .list(v-show='isWorking')
           .task(v-repeat='working')
             .title {{title}}
-      #history(v-on='click: switchHistory', v-show='isHistory')
-        .cover
+      #history
+        .cover(v-on='click: switchHistory', v-show='isHistory | oppsite')
           .text
             span history length
             span.count {{historyLength}}
-        .list(v-show='isHistory | oppsite')
+        .list(v-show='isHistory')
           .record(v-repeat='history')
             .action {{action}}
             .title {{title}}

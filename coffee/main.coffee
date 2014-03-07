@@ -26,20 +26,21 @@ menuView = new Vue
       $get: -> @working.length
     historyLength:
       $get: -> @history.length
-  methods:
-    switchFutures: ->
-      @mode = 'futures'
-    switchWorking: (event) ->
-      console.log 'working'
-      @mode = 'working'
-    switchHistory: ->
-      @mode = 'history'
     isFutures: ->
       @mode is 'futures'
     isWorking: ->
       @mode is 'working'
     isHistory: ->
       @mode is 'history'
+  methods:
+    switchFutures: ->
+      @mode = 'futures'
+    switchWorking: (event) ->
+      @mode = 'working'
+    switchHistory: ->
+      @mode = 'history'
+    addTask: ->
+      editorView.$emit 'add'
 
 editorView = new Vue
   el: '#editor'
@@ -48,3 +49,9 @@ editorView = new Vue
     content: ''
     time: ''
     editing: no
+
+editorView.$on 'add', ->
+  @$data.title = ''
+  @$data.content = ''
+  @$data.time = (new Date).toISOString()
+  @$data.editing = yes

@@ -28,37 +28,37 @@ body {
     background: rgb(238, 238, 238);
     color: rgb(109, 109, 109);
     -webkit-transition-duration: 200ms;
+    flex: 1;
+    display: flex;
+    align-items: stretch;
 }
 #menu > div:hover {
     background: white;
     color: black;
 }
 
-#editor {}
+#editor {
+    position: absolute;
+    background: rgba(65, 47, 60, 0.63);
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
 
 
 .mode-futures#menu {}
 .mode-futures #futures {
     flex: 3;
 }
-.mode-futures #working, .mode-futures #history {
-    flex: 1;
-}
 
 .mode-working#menu {
     height: 100%;
-}
-.mode-working #futures, .mode-working #history {
-    flex: 1;
 }
 .mode-working #working {
     flex: 3;
 }
 
 .mode-history#menu {}
-.mode-history #futures, .mode-history #working {
-    flex: 1;
-}
 .mode-history #history {
     flex: 3;
 }
@@ -67,4 +67,5 @@ body {
 .cover {
     padding: 10px;
     cursor: pointer;
+    flex: 1;
 }
