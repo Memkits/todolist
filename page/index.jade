@@ -17,6 +17,10 @@ html
         .list(v-show='mode == "futures"')
           .task(v-repeat='futures')
             .title(v-model='title')
+            .content(v-model='content')
+            .handlers
+              span.button.do-working(v-on='click: doWork($index)') work
+              span.button.do-editing(v-on='click: doEditFutures($index)') edit
       #working
         .cover(v-on='click: mode="working"', v-show='mode != "working"')
           .text
@@ -27,6 +31,11 @@ html
         .list(v-show='mode == "working"')
           .task(v-repeat='working')
             .title(v-model='title')
+            .content(v-model='content')
+            .handlers
+              span.button.do-futures(v-on='click: doFutures($index)') futures
+              span.button.do-editing(v-on='click: doEditWorking($index)') edit
+              span.button.do-history(v-on='click: doHistory($index)') history
       #history
         .cover(v-on='click: mode="history"', v-show='mode != "history"')
           .text
@@ -36,17 +45,18 @@ html
           .record(v-repeat='history')
             .action(v-model='action')
             .title(v-model='title')
+            .content(v-model='content')
             .time(v-model='finish')
     #editor(v-show='editing')
       #dialog(class='action-{{action}}')
         #action
           span(v-model='action')
-          span#dismiss(v-on='click: dismiss') ✗
+          span#dismiss(v-on='click: dismiss') ×
         #inputing
           input#title(v-model='title')
           input#content(v-model='content')
-        #add-control.controls(v-show='action == "add"')
+        #create-control.controls(v-show='action == "create"')
           #create-task.button(v-on='click: createTask') create
-        #edit-control.controls(v-show='action == "edit"')
+        #edit-control.controls(v-show='action == "update"')
           #update-task.button(v-on='click: updateTask') update
           #remove-task.button(v-on='click: removeTask') remove

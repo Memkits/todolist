@@ -1,20 +1,23 @@
 
 Vue = require 'vue'
 
-futures = [
-  title: 'title is'
-,
-  title: 'second '
-]
-working = []
-history = []
+try
+  futures = JSON.parse (localStorage.getItem 'futures')
+  working = JSON.parse (localStorage.getItem 'working')
+  history = JSON.parse (localStorage.getItem 'history')
 
-genId = (new Date).getTime().toString()
+futures ?= []
+working ?= []
+history ?= []
+
+genId = -> (new Date).getTime().toString()
 
 Vue.filter 'oppsite', (value) ->
   not value
 
-menuView = new Vue
+app = {}
+
+app.menuView = menuView = new Vue
   el: '#menu'
   data:
     futures: futures
@@ -24,9 +27,27 @@ menuView = new Vue
   computed: {}
   methods:
     createTask: (event) ->
-      editorView.$emit 'add'
+      app.editorView.$emit 'create'
+    doWork: (index) ->
+      taskList = @$data.futures.splice index, 1
+      @$data.working.unshift taskList[0]
+    doEditFutures: (index) ->
+      app.editorView.$emit 'update', @$data.futures[index]
+    doFutures: (index) ->
+      taskList = @$data.working.splice index, 1
+      console.log taskList[0]
+      @$data.futures.unshift taskList[0]
+    doEditWorking: (index) ->
+      app.editorView.$emit 'update', @$data.working[index]
+    doHistory: (index) ->
+      taskList = @$data.working.splice index, 1
+      @$data.history.unshift
+        action: 'history'
+        title: taskList[0].title
+        content: taskList[0].content
+        finish: '...'
 
-editorView = new Vue
+app.editorView = editorView = new Vue
   el: '#editor'
   data:
     id: 'default'
@@ -34,16 +55,15 @@ editorView = new Vue
     content: ''
     time: ''
     editing: no
-    action: 'add'
+    action: 'create'
   computed: {}
   methods:
     updateTask: ->
-      task =
+      menuView.$emit 'update',
         id: @id
         title: @title
         content: @content
         time: @time
-      menuView.$emit 'update', task
       @editing = no
     removeTask: ->
       task =
@@ -51,19 +71,54 @@ editorView = new Vue
       menuView.$emit 'remove', task
       @editing = no
     createTask: ->
-      task =
+      menuView.$emit 'create',
         id: @id
         title: @title
         content: @content
         time: @time
-      menuView.$emit 'create', task
       @editing = no
     dismiss: ->
       @editing = no
 
-editorView.$on 'add', ->
+editorView.$on 'create', ->
   @$data.title = ''
+  @$data.id = genId()
   @$data.content = ''
   @$data.time = (new Date).toISOString()
   @$data.editing = yes
-  @$data.action = 'add'
+  @$data.action = 'create'
+
+editorView.$on 'update', (task) ->
+  @$data.title = task.title
+  @$data.content = task.content
+  @$data.id = task.id
+  @$data.time = (new Date).toISOString()
+  @$data.editing = yes
+  @$data.action = 'update'
+  console.log 'editing is', @$data.editing
+
+menuView.$on 'create', (task) ->
+  @$data.working.unshift task
+
+menuView.$on 'remove', (task) ->
+  for value, index in @$data.futures
+    if value.id is task.id
+      @$data.futures.splice index, 1
+  for value, index in @$data.working
+    if value.id is task.id
+      @$data.futures.splice index, 1
+
+menuView.$on 'update', (task) ->
+  for value in @$data.futures
+    if value.id is task.id
+      value.title = task.title
+      value.content = task.content
+  for value in @$data.working
+    if value.id is task.id
+      value.title = task.title
+      value.content = task.content
+
+window.onbeforeunload = ->
+  localStorage.setItem 'futures', (JSON.stringify futures)
+  localStorage.setItem 'working', (JSON.stringify working)
+  localStorage.setItem 'history', (JSON.stringify history)
