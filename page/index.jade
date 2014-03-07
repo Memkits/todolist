@@ -9,48 +9,44 @@ html
   body#app
     #menu(class='mode-{{mode}}')
       #futures
-        .cover(v-on='click: switchFutures', v-show='isFutures | oppsite')
+        .cover(v-on='click: mode="futures"', v-show='mode != "futures"')
           .text
             span Currently you have
-            span.count {{futuresLength}}
+            span.count(v-model='futures.length')
             span tasks
-        .list(v-show='isFutures')
+        .list(v-show='mode == "futures"')
           .task(v-repeat='futures')
-            .title {{title}}
+            .title(v-model='title')
       #working
-        .cover(v-on='click: switchWorking', v-show='isWorking | oppsite')
+        .cover(v-on='click: mode="working"', v-show='mode != "working"')
           .text
             span Currently you have
-            span.count {{workingLength}}
+            span.count(v-model='working.length')
             span tasks
-          .button#add(v-on='click: createTask')
-            | +
-        .list(v-show='isWorking')
+          .button#add(v-on='click: createTask') +
+        .list(v-show='mode == "working"')
           .task(v-repeat='working')
-            .title {{title}}
+            .title(v-model='title')
       #history
-        .cover(v-on='click: switchHistory', v-show='isHistory | oppsite')
+        .cover(v-on='click: mode="history"', v-show='mode != "history"')
           .text
             span history length
-            span.count {{historyLength}}
-        .list(v-show='isHistory')
+            span.count(v-model='history.length')
+        .list(v-show='mode == "history"')
           .record(v-repeat='history')
-            .action {{action}}
-            .title {{title}}
-            .time {{finish}}
+            .action(v-model='action')
+            .title(v-model='title')
+            .time(v-model='finish')
     #editor(v-show='editing')
       #dialog(class='action-{{action}}')
         #action
-          span {{action}}
+          span(v-model='action')
           span#dismiss(v-on='click: dismiss') ✗
         #inputing
-          input#title
-          input#content
-        #add-control.controls(v-show='isEditing | oppsite')
-          #create-task.button(v-on='click: createTask')
-            | create
-        #edit-control.controls(v-show='isEditing')
-          #update-task.button(v-on='click: updateTask')
-            | update
-          #remove-task.button(v-on='click: removeTask')
-            | remove
+          input#title(v-model='title')
+          input#content(v-model='content')
+        #add-control.controls(v-show='action == "add"')
+          #create-task.button(v-on='click: createTask') create
+        #edit-control.controls(v-show='action == "edit"')
+          #update-task.button(v-on='click: updateTask') update
+          #remove-task.button(v-on='click: removeTask') remove

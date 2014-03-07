@@ -21,26 +21,8 @@ menuView = new Vue
     working: working
     history: history
     mode: 'working'
-  computed:
-    futuresLength:
-      $get: -> @futures.length
-    workingLength:
-      $get: -> @working.length
-    historyLength:
-      $get: -> @history.length
-    isFutures: ->
-      @mode is 'futures'
-    isWorking: ->
-      @mode is 'working'
-    isHistory: ->
-      @mode is 'history'
+  computed: {}
   methods:
-    switchFutures: ->
-      @mode = 'futures'
-    switchWorking: (event) ->
-      @mode = 'working'
-    switchHistory: ->
-      @mode = 'history'
     createTask: (event) ->
       editorView.$emit 'add'
 
@@ -53,10 +35,7 @@ editorView = new Vue
     time: ''
     editing: no
     action: 'add'
-  computed:
-    isEditing:
-      $get: ->
-        @action isnt 'add'
+  computed: {}
   methods:
     updateTask: ->
       task =
