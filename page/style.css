@@ -43,6 +43,9 @@ body {
     width: 100%;
     height: 100%;
     top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -69,3 +72,49 @@ body {
     cursor: pointer;
     flex: 1;
 }
+
+#overlay {}
+
+#dialog {
+    width: 400px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 5px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#inputing {
+    display: flex;
+    flex-direction: column;
+}
+
+#inputing > input {
+    line-height: 29px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#controls > div {
+    width: 83px;
+    text-align: center;
+    background: rgb(211, 211, 255);
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+#controls > div:hover {
+    background: rgb(161, 161, 255);
+}
+
+#content #save {}
+
+#content #delete {}

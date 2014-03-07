@@ -48,10 +48,12 @@ editorView = new Vue
     title: ''
     content: ''
     time: ''
-    editing: no
+    editing: yes
+    action: 'add'
 
 editorView.$on 'add', ->
   @$data.title = ''
   @$data.content = ''
   @$data.time = (new Date).toISOString()
   @$data.editing = yes
+  @$data.action = 'add'

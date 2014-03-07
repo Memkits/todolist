@@ -39,11 +39,11 @@ html
             .title {{title}}
             .time {{finish}}
     #editor(v-show='editing')
-      #overlay
-        #dialog
-          .inputing
-            input#title
-            input#content
-          .controls
-            #save save
-            #delete delete
+      #dialog
+        #action {{action}}
+        #inputing
+          input#title
+          input#content
+        #controls
+          #save save
+          #delete delete
