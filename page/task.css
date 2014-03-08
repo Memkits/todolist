@@ -1,0 +1,29 @@
+
+.task {
+    padding: 0 20px;
+    box-shadow: 0 1px 0px rgb(206, 206, 206);
+    position: relative;
+}
+
+.handlers {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: absolute;
+    top: 6px;
+    right: 3px;
+}
+.handlers .button {
+    width: 60px;
+    margin: 0px 3px;
+    text-align: center;
+    background: rgb(200, 200, 255);
+    color: white;
+    line-height: 22px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.handlers .button:hover {
+    background: rgb(145, 145, 255);
+}

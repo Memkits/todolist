@@ -1,0 +1,43 @@
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    height: 100%;
+}
+
+#menu > div {
+    background: rgb(238, 238, 238);
+    color: rgb(109, 109, 109);
+    -webkit-transition-duration: 200ms;
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    display: flex;
+}
+#menu > div:hover {
+    background: white;
+    color: black;
+}
+
+.mode-futures#menu {}
+.mode-futures #futures {
+    flex: 3;
+    background: white;
+}
+
+.mode-working#menu {
+    height: 100%;
+}
+.mode-working #working {
+    flex: 3;
+    background: white;
+}
+
+.mode-history#menu {}
+.mode-history #history {
+    flex: 3;
+    background: white;
+}
