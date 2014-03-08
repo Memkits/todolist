@@ -27,6 +27,9 @@ app.menu = new Vue
         title: taskList[0].title
         content: taskList[0].content
         finish: '...'
+    doFocus: (index) ->
+      taskList = @$data.working.splice index, 1
+      @$data.working.unshift taskList[0]
 
 app.menu.$on 'create', (task) ->
   @$data.working.unshift task

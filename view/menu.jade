@@ -25,6 +25,7 @@
         .title(v-model='title')
         .content(v-model='content')
         .handlers
+          span.button.do-futures(v-on='click: doFocus($index)') focus
           span.button.do-futures(v-on='click: doFutures($index)') futures
           span.button.do-editing(v-on='click: doEditWorking($index)') edit
           span.button.do-history(v-on='click: doHistory($index)') history
