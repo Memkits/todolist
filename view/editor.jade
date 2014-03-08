@@ -1,0 +1,14 @@
+
+#editor(v-show='editing')
+  #dialog(class='action-{{action}}')
+    #action
+      span.name(v-model='action')
+      span#dismiss(v-on='click: dismiss') ×
+    #inputing
+      input#title(v-model='title')
+      input#content(v-model='content')
+    #create-control.controls(v-show='action == "create"')
+      #create-task.button(v-on='click: createTask') create
+    #edit-control.controls(v-show='action == "update"')
+      #update-task.button(v-on='click: updateTask') update
+      #remove-task.button(v-on='click: removeTask') remove
