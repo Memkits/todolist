@@ -28,7 +28,9 @@
     justify-content: space-between;
 }
 
-#action .name {}
+#action .name {
+    text-transform: capitalize;
+}
 
 #dismiss {
     cursor: pointer;
@@ -47,11 +49,11 @@
 #inputing > input {
     line-height: 29px;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: none;
     border-bottom: 1px solid rgb(233, 233, 233);
     outline: none;
-    padding: 0px 0.5em;
+    padding: 4px 0.5em;
 }
 
 .controls {
@@ -71,4 +73,14 @@
 }
 .controls .button:hover {
     background: rgb(118, 118, 255);
+}
+
+#title {}
+#title:first-letter {
+    text-transform: capitalize;
+}
+
+#content {}
+#content:first-letter {
+    text-transform: capitalize;
 }

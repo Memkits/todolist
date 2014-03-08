@@ -1,7 +1,29 @@
 
 
-.record {}
+.record {
+    padding: 10px;
+    box-shadow: 0px 0px 3px rgb(182, 182, 182);
+}
 
-.content #save {}
+.record .action {
+    font-size: 16px;
+    color: rgb(210, 192, 255);
+    text-align: center;
+    border-radius: 5px;
+    display: inline-block;
+    float: left;
+    margin-right: 1em;
+}
 
-.content #delete {}
+.record .title {
+    font-size: 17px;
+    color: black;
+}
+.record .title:first-letter {
+    text-transform: capitalize;
+}
+.record .content {
+    color: rgb(197, 197, 197);
+    font-size: 16px;
+    line-height: 22px;
+}

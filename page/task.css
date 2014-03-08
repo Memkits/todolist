@@ -3,6 +3,16 @@
     padding: 0 20px;
     box-shadow: 0 1px 0px rgb(206, 206, 206);
     position: relative;
+    height: 80px;
+}
+.task .title {
+}
+.task .title:first-letter {
+    text-transform: capitalize;
+}
+.task .content {
+    color: lightgrey;
+    font-size: 15px;
 }
 
 .handlers {

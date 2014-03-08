@@ -5,8 +5,8 @@
       span.name(v-model='action')
       span#dismiss(v-on='click: dismiss') ×
     #inputing
-      input#title(v-model='title')
-      input#content(v-model='content')
+      input#title(v-model='title', placeholder='title')
+      input#content(v-model='content', placeholder='content')
     #create-control.controls(v-show='action == "create"')
       #create-task.button(v-on='click: createTask') create
     #edit-control.controls(v-show='action == "update"')

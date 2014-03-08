@@ -30,3 +30,11 @@
 #add:hover {
     color: rgb(165, 68, 219);
 }
+
+.empty {
+    padding: 176px;
+    color: rgb(165, 165, 165);
+}
+.empty:first-letter {
+    text-transform: capitalize;
+}

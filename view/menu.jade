@@ -13,6 +13,8 @@
         .handlers
           span.button.do-working(v-on='click: doWork($index)') work
           span.button.do-editing(v-on='click: doEditFutures($index)') edit
+      .empty(v-show='futures.length == 0')
+        span futures is empty
 
   #working
     .cover(v-on='click: mode="working"', v-show='mode != "working"')
@@ -29,6 +31,8 @@
           span.button.do-futures(v-on='click: doFutures($index)') futures
           span.button.do-editing(v-on='click: doEditWorking($index)') edit
           span.button.do-history(v-on='click: doHistory($index)') history
+      .empty(v-show='working.length == 0')
+        span working is empty
 
   #history
     .cover(v-on='click: mode="history"', v-show='mode != "history"')
@@ -40,4 +44,5 @@
         .action(v-model='action')
         .title(v-model='title')
         .content(v-model='content')
-        .time(v-model='finish')
+      .empty(v-show='history.length == 0')
+        span history is empty
