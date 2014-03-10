@@ -2,6 +2,11 @@
 require 'shelljs/make'
 command = (code) -> exec code, async: yes
 fs = require 'fs'
+net = require 'net'
+
+station = require 'devtools-reloader-station'
+
+station.start()
 
 target.dev = ->
   exec 'pkill -f doodle', ->
@@ -14,4 +19,5 @@ target.dev = ->
     else
       rm "coffee/#{filename}"
   fs.watch 'src', (type, name) ->
-    exec 'browserify -o build/build.js -d src/main.js'
+    exec 'browserify -o build/build.js -d src/main.js', ->
+      station.reload 'repo/todolist'

@@ -8,7 +8,7 @@ try
 
 unless storage?
   storage = {}
-  storage.editor = 
+  storage.editor =
     id: ''
     title: ''
     content: ''

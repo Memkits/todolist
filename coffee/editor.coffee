@@ -4,6 +4,11 @@ Vue = require 'vue'
 
 genId = -> (new Date).getTime().toString()
 
+Vue.directive 'autofocus',
+  update: (editing) ->
+    if editing then setTimeout =>
+        @el.focus()
+
 app.editor = new Vue
   el: '#editor'
   data: app.get 'editor'
@@ -47,4 +52,3 @@ app.editor.$on 'update', (task) ->
   @$data.time = (new Date).toISOString()
   @$data.editing = yes
   @$data.action = 'update'
-  console.log 'editing is', @$data.editing
