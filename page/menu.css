@@ -8,8 +8,8 @@
 }
 
 #menu > div {
-    background: rgb(238, 238, 238);
-    color: rgb(109, 109, 109);
+    background: rgb(243, 243, 243);
+    color: rgb(0, 0, 0);
     -webkit-transition-duration: 200ms;
     flex: 1;
     display: flex;
@@ -17,10 +17,6 @@
     flex-direction: column;
     display: flex;
     box-shadow: 0px 0px 1px rgb(209, 209, 209);
-}
-#menu > div:hover {
-    background: white;
-    color: black;
 }
 
 .mode-futures#menu {}
@@ -35,6 +31,7 @@
 .mode-working #working {
     flex: 3;
     background: white;
+    overflow: hidden;
 }
 
 .mode-history#menu {}

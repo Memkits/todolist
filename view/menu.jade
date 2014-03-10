@@ -21,8 +21,9 @@
       .text
         span.count(v-model='working.length')
         span working tasks
-      .button#add(v-on='click: createTask') +
     .list(v-show='mode == "working"')
+      #task-creator
+        #add(v-on='click: createTask') +
       .task(v-repeat='working')
         .title(v-model='title')
         .content(v-model='content')
