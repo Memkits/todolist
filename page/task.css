@@ -29,9 +29,6 @@
 }
 .task .title {
 }
-.task .title:first-letter {
-    text-transform: capitalize;
-}
 .task .content {
     color: lightgrey;
     font-size: 15px;
@@ -58,4 +55,8 @@
 
 .handlers .button:hover {
     background: rgb(145, 145, 255);
+}
+
+[contenteditable] {
+    outline: none;
 }

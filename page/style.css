@@ -1,5 +1,4 @@
 
-@import url('editor.css');
 @import url('menu.css');
 @import url('record.css');
 @import url('task.css');
@@ -17,7 +16,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    font-family: Optima;
+    font-family: 'MF YueYuan (Noncommercial)', Optima, 'Hiragino Sans GB';
     font-size: 20px;
     line-height: 40px;
 }

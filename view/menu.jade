@@ -12,7 +12,6 @@
         .content(v-model='content')
         .handlers
           span.button.do-working(v-on='click: doWork($index)') work
-          span.button.do-editing(v-on='click: doEditFutures($index)') edit
       .empty(v-show='futures.length == 0')
         span futures is empty
 
@@ -25,13 +24,13 @@
       #task-creator
         #add(v-on='click: createTask') +
       .task(v-repeat='working')
-        .title(v-model='title')
-        .content(v-model='content')
+        .title(v-model='title', contenteditable)
+        .content(v-model='content', contenteditable)
         .handlers
           span.button.do-futures(v-on='click: doFocus($index)') focus
           span.button.do-futures(v-on='click: doFutures($index)') futures
-          span.button.do-editing(v-on='click: doEditWorking($index)') edit
           span.button.do-history(v-on='click: doHistory($index)') history
+          span.button.do-history(v-on='click: doRemove($index)') remove
       .empty(v-show='working.length == 0')
         span working is empty
 

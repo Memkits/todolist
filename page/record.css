@@ -19,9 +19,6 @@
     font-size: 17px;
     color: black;
 }
-.record .title:first-letter {
-    text-transform: capitalize;
-}
 .record .content {
     color: rgb(197, 197, 197);
     font-size: 16px;

@@ -8,13 +8,6 @@ try
 
 unless storage?
   storage = {}
-  storage.editor =
-    id: ''
-    title: ''
-    content: ''
-    time: ''
-    editing: no
-    action: 'create'
   storage.menu = 
     futures: []
     working: []
@@ -27,6 +20,6 @@ exports.set = (key, value) ->
   storage[key] = value
 
 window.onbeforeunload = ->
-  storage.editor = exports.editor.$data
   storage.menu = exports.menu.$data
+  delete storage.edit
   localStorage.setItem 'todolist-storage', (JSON.stringify storage)
