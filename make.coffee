@@ -19,5 +19,5 @@ target.dev = ->
     else
       rm "coffee/#{filename}"
   fs.watch 'src', (type, name) ->
-    exec 'browserify -o build/build.js -d src/main.js', ->
+    exec 'browserify -o build/build.js -d src/menu.js', ->
       station.reload 'repo/todolist'

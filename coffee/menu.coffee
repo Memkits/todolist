@@ -2,6 +2,17 @@
 app = require './app'
 Vue = require 'vue'
 
+Vue.directive 'focus-editable',
+  bind: -> setTimeout =>
+    range = document.createRange()
+    sel = window.getSelection()
+    target = @el
+    range.setStartBefore target
+    range.setEndAfter target
+    sel.removeAllRanges();
+    sel.addRange(range);
+    @el.focus()
+
 app.menu = new Vue
   el: '#menu'
   data: app.get 'menu'
@@ -9,7 +20,7 @@ app.menu = new Vue
   methods:
     createTask: (event) ->
       @$data.working.unshift
-        title: '..'
+        title: ''
         content: '...'
       event.stopPropagation()
     doWork: (index) ->

@@ -24,7 +24,7 @@
       #task-creator
         #add(v-on='click: createTask') +
       .task(v-repeat='working')
-        .title(v-model='title', contenteditable)
+        .title(v-model='title', contenteditable, v-focus-editable)
         .content(v-model='content', contenteditable)
         .handlers
           span.button.do-futures(v-on='click: doFocus($index)') focus
