@@ -12,7 +12,8 @@ target.dev = ->
   exec 'pkill -f doodle', ->
     command 'doodle index.html build/build.js log:yes'
   fs.watch 'view', interva: 300, ->
-    exec 'jade -o ./ view/index.jade'
+    exec 'jade -o ./ view/index.jade', ->
+      station.reload 'repo/todolist'
   fs.watch 'coffee', interval: 300, (type, filename) ->
     if type in ['create', 'change']
       exec "coffee -o src/ -bc coffee/#{filename}"

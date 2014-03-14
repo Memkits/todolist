@@ -40,5 +40,8 @@ app.menu = new Vue
     doFocus: (index) ->
       taskList = @$data.working.splice index, 1
       @$data.working.unshift taskList[0]
+    doFocusFutures: (index) ->
+      taskList = @$data.futures.splice index, 1
+      @$data.futures.unshift taskList[0]
     doRemove: (index) ->
       @$data.working.splice index, 1
