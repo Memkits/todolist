@@ -20,8 +20,10 @@
     "todo",
     "list"
   ],
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "moment": "~2.5.1",
-    "vue": "~0.9.3"
+    "vue": "~0.9.3",
+    "cirru-html": "~0.1.4"
   }
 }

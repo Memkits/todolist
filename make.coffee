@@ -4,6 +4,8 @@ command = (code) -> exec code, async: yes
 fs = require 'fs'
 net = require 'net'
 
+{renderer} = require 'cirru-html'
+
 station = require 'devtools-reloader-station'
 
 station.start()
@@ -22,3 +24,10 @@ target.dev = ->
   fs.watch 'src', (type, name) ->
     exec 'browserify -o build/build.js -d src/menu.js', ->
       station.reload 'repo/todolist'
+
+target.html = ->
+  fs.watch 'cirru/', interval: 200, ->
+    file = 'cirru/index.cirru'
+    render = renderer (cat file), '@filename': file
+    render().to 'index.html'
+    console.log 'wrote to index.html'
