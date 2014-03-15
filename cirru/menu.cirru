@@ -65,9 +65,9 @@
           span.button
             :v-on "click: doHistory($index)"
             = history
-          span.button
+          span.button.remove
             :v-on "click: doRemove($index)"
-            = remove
+            = del
       .empty
         :v-show "working.length == 0"
         span $ = working is empty

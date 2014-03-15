@@ -46,7 +46,7 @@
     width: 60px;
     margin: 0px 3px;
     text-align: center;
-    background: rgb(200, 200, 255);
+    background: rgb(205, 205, 255);
     color: white;
     line-height: 22px;
     font-size: 14px;
@@ -55,6 +55,14 @@
 
 .handlers .button:hover {
     background: rgb(145, 145, 255);
+}
+
+.handlers .button.remove {
+    width: 23px;
+    background: rgb(255, 205, 205);
+}
+.handlers .button.remove:hover {
+    background: red;
 }
 
 [contenteditable] {

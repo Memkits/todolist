@@ -1,33 +1,29 @@
 
 require 'shelljs/make'
-command = (code) -> exec code, async: yes
 fs = require 'fs'
-net = require 'net'
 
 {renderer} = require 'cirru-html'
 
 station = require 'devtools-reloader-station'
-
 station.start()
 
+command = (code) -> exec code, async: yes
+
 target.dev = ->
-  exec 'pkill -f doodle', ->
-    command 'doodle index.html build/build.js log:yes'
-  fs.watch 'view', interva: 300, ->
-    exec 'jade -o ./ view/index.jade', ->
-      station.reload 'repo/todolist'
   fs.watch 'coffee', interval: 300, (type, filename) ->
     if type in ['create', 'change']
       exec "coffee -o src/ -bc coffee/#{filename}"
     else
       rm "coffee/#{filename}"
-  fs.watch 'src', (type, name) ->
+  fs.watch 'js', (type, name) ->
     exec 'browserify -o build/build.js -d src/menu.js', ->
       station.reload 'repo/todolist'
 
+  fs.watch 'cirru/', interval: 200, target.html
+
 target.html = ->
-  fs.watch 'cirru/', interval: 200, ->
     file = 'cirru/index.cirru'
     render = renderer (cat file), '@filename': file
     render().to 'index.html'
     console.log 'wrote to index.html'
+    station.reload 'repo/todolist'
