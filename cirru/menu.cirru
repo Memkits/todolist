@@ -84,7 +84,6 @@
       :v-show "mode == 'history'"
       .record
         :v-repeat history
-        .action (:v-model action)
         .title (:v-model title)
         .content (:v-model content)
       .empty

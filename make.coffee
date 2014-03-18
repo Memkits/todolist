@@ -12,11 +12,11 @@ command = (code) -> exec code, async: yes
 target.dev = ->
   fs.watch 'coffee', interval: 300, (type, filename) ->
     if type in ['create', 'change']
-      exec "coffee -o src/ -bc coffee/#{filename}"
+      exec "coffee -o js/ -bc coffee/#{filename}"
     else
       rm "coffee/#{filename}"
   fs.watch 'js', (type, name) ->
-    exec 'browserify -o build/build.js -d src/menu.js', ->
+    exec 'browserify -o build/build.js -d js/menu.js', ->
       station.reload 'repo/todolist'
 
   fs.watch 'cirru/', interval: 200, target.html

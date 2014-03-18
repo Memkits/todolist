@@ -1,4 +1,10 @@
 
+#futures .list {
+    padding-top: 140px;
+}
+#futures .list .task:first-child {
+    border-top: solid 1px rgb(224, 224, 224);
+}
 .list {
     padding-bottom: 400px;
     overflow: auto;
