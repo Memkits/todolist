@@ -9,7 +9,7 @@ station.start()
 
 command = (code) -> exec code, async: yes
 
-target.dev = ->
+target.watch = ->
   fs.watch 'coffee', interval: 300, (type, filename) ->
     if type in ['create', 'change']
       exec "coffee -o js/ -bc coffee/#{filename}"
