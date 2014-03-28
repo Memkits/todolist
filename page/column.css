@@ -1,9 +1,8 @@
 
-#futures .list {
-    padding-top: 140px;
+#futures .list, #history .list {
+    padding-top: 80px;
 }
 #futures .list .task:first-child {
-    border-top: solid 1px rgb(224, 224, 224);
 }
 .list {
     padding-bottom: 400px;

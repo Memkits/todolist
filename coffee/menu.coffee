@@ -10,7 +10,7 @@ app.menu = new Vue
     createTask: (event) ->
       @$data.working.unshift
         title: ''
-        content: '...'
+        content: ''
       event.stopPropagation()
     doWork: (index) ->
       taskList = @$data.futures.splice index, 1
@@ -23,8 +23,8 @@ app.menu = new Vue
       @$data.history.unshift
         title: taskList[0].title
         content: taskList[0].content
-        finish: '...'
-      @$data.history.splice 40
+        finish: ''
+      @$data.history.splice 200
     doFocus: (index) ->
       taskList = @$data.working.splice index, 1
       @$data.working.unshift taskList[0]
@@ -33,6 +33,8 @@ app.menu = new Vue
       @$data.futures.unshift taskList[0]
     doRemove: (index) ->
       @$data.working.splice index, 1
+    removeHistory: (index) ->
+      @$data.history.splice index, 1
 
 Vue.directive 'focus-editable',
   bind: -> setTimeout =>

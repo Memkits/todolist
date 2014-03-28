@@ -17,8 +17,10 @@
         :v-repeat futures
         .title
           :v-model title
+          :contenteditable
         .content
           :v-model content
+          :contenteditable
         .handlers
           span.button
             :v-on "click: doFocusFutures($index)"
@@ -86,6 +88,10 @@
         :v-repeat history
         .title (:v-model title)
         .content (:v-model content)
+        .handlers
+          span.button.remove
+            :v-on "click: removeHistory($index)"
+            = del
       .empty
         :v-show "history.length == 0"
         span $ = history is empty

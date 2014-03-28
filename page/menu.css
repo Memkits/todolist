@@ -8,9 +8,7 @@
 }
 
 #menu > div {
-    background: rgb(243, 243, 243);
     color: rgb(0, 0, 0);
-    -webkit-transition-duration: 200ms;
     flex: 1;
     display: flex;
     align-items: stretch;

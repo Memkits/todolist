@@ -2,7 +2,7 @@
 
 .record {
     padding: 10px;
-    border-bottom: solid 1px rgb(255, 226, 226);
+    position: relative;
 }
 
 .record .action {
@@ -16,7 +16,6 @@
 }
 
 .record .title {
-    font-size: 17px;
     color: black;
 }
 .record .content {
