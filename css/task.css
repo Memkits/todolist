@@ -1,39 +1,24 @@
 
-#task-creator {
-    height: 60px;
-}
-#task-creator #add {
-    line-height: 40px;
-    font-size: 35px;
-    cursor: pointer;
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    margin-left: 20px;
-    text-align: center;
-    color: rgb(185, 185, 185);
-}
-
-#task-creator, .task {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-}
-
 .task {
     padding: 0 20px;
     position: relative;
     height: 80px;
 }
-.task:hover, .record:hover {
-    background: rgb(247, 247, 247);
-}
 .task .title {
+    box-shadow: 0px 1px 0 rgb(187, 187, 187);
+    font-size: 18px;
 }
 .task .content {
     color: lightgrey;
     font-size: 15px;
+}
+.task input {
+    display: block;
+    line-height: 2em;
+    border: none;
+    width: 80%;
+    outline: none;
+    background-color: transparent;
 }
 
 .handlers {
@@ -42,11 +27,8 @@
     position: absolute;
     top: 6px;
     right: 3px;
-    display: none;
 }
-.task:hover .handlers {
-    display: flex;
-}
+
 .handlers .button {
     width: 48px;
     margin: 0px 3px;
@@ -56,6 +38,7 @@
     line-height: 22px;
     font-size: 14px;
     cursor: pointer;
+    padding: 2px 4px;
 }
 
 .handlers .button:hover {
@@ -72,4 +55,8 @@
 
 [contenteditable] {
     outline: none;
+}
+
+#now .task:first-child {
+    background: rgb(236, 235, 235);
 }

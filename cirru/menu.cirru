@@ -1,97 +1,27 @@
 
-#menu
-  :class mode-{{mode}}
+body#app
+  #menu
+    #sidebar
+      :class "view-{{view}}"
+      .category.now
+        :v-on "click: (view='now')"
+        span.count (:v-model now.length)
+        = "for now"
+      .category.my
+        :v-on "click: (view='my')"
+        span.count (:v-model my.length)
+        = "with me"
+      .category.work
+        :v-on "click: (view='work')"
+        span.count (:v-model work.length)
+        = "at work"
+      .category.done
+        :v-on "click: (view='done')"
+        span.count (:v-model done.length)
+        = "done"
 
-  #futures
-    .cover
-      :v-on "click: mode='futures'"
-      :v-show "mode != 'futures'"
-      .text
-        span.count
-          :v-model futures.length
-        span
-          = futures Tasks
-    .list
-      :v-show "mode == 'futures'"
-      .task
-        :v-repeat futures
-        .title
-          :v-model title
-          :contenteditable
-        .content
-          :v-model content
-          :contenteditable
-        .handlers
-          span.button
-            :v-on "click: doFocusFutures($index)"
-            = focus
-          span.button
-            :v-on= "click: doWork($index)"
-            = work
-      .empty
-        :v-show "futures.length == 0"
-        span
-          = futures is empty
-
-  #working
-    .cover
-      :v-on "click: mode='working'"
-      :v-show "mode != 'working'"
-      .text
-        span.count
-          :v-model working.length
-        span
-          = working tasks
-    .list
-      :v-show "mode == 'working'"
-      #task-creator
-        #add
-          :v-on click:createTask
-          = +
-      .task
-        :v-repeat working
-        .title
-          :v-model title
-          :contenteditable
-          :v-focus-editable
-        .content
-          :v-model content
-          :contenteditable
-        .handlers
-          span.button
-            :v-on "click: doFocus($index)"
-            = focus
-          span.button
-            :v-on "click: doFutures($index)"
-            = futures
-          span.button
-            :v-on "click: doHistory($index)"
-            = history
-          span.button.remove
-            :v-on "click: doRemove($index)"
-            = del
-      .empty
-        :v-show "working.length == 0"
-        span $ = working is empty
-
-  #history
-    .cover
-      :v-on "click: mode='history'"
-      :v-show "mode != 'history'"
-      .text
-        span.count
-          :v-model history.length
-        span $ = history records
-    .list
-      :v-show "mode == 'history'"
-      .record
-        :v-repeat history
-        .title (:v-model title)
-        .content (:v-model content)
-        .handlers
-          span.button.remove
-            :v-on "click: removeHistory($index)"
-            = del
-      .empty
-        :v-show "history.length == 0"
-        span $ = history is empty
+    #list
+      @partial now.cirru
+      @partial work.cirru
+      @partial my.cirru
+      @partial done.cirru

@@ -1,6 +1,8 @@
 
-app = require './app'
-Vue = require 'vue'
+try
+  storage = JSON.parse (localStorage.getItem 'todolist')
+window.onbeforeunload = ->
+  localStorage.setItem 'todolist', (JSON.stringify storage)
 
 Vue.directive 'focus-editable',
   bind: -> setTimeout =>
@@ -13,38 +15,32 @@ Vue.directive 'focus-editable',
     sel.addRange(range);
     @el.focus()
 
-app.menu = new Vue
+menu = new Vue
   el: '#menu'
-  data: app.get 'menu'
+  data:
+    now: storage.now or []
+    my: storage.my or []
+    work: storage.work or []
+    done: storage.done or []
+    view: storage.view or 'my'
   computed: {}
   methods:
-    createTask: (event) ->
-      @$data.working.unshift
+    newIn: (target) ->
+      @[target].unshift
         title: ''
         content: ''
-      event.stopPropagation()
-    doWork: (index) ->
-      taskList = @$data.futures.splice index, 1
-      @$data.working.unshift taskList[0]
-    doFutures: (index) ->
-      taskList = @$data.working.splice index, 1
-      @$data.futures.unshift taskList[0]
-    doHistory: (index) ->
-      taskList = @$data.working.splice index, 1
-      @$data.history.unshift
-        title: taskList[0].title
-        content: taskList[0].content
-        finish: ''
-      @$data.history.splice 200
-    doFocus: (index) ->
-      taskList = @$data.working.splice index, 1
-      @$data.working.unshift taskList[0]
-    doFocusFutures: (index) ->
-      taskList = @$data.futures.splice index, 1
-      @$data.futures.unshift taskList[0]
-    doRemove: (index) ->
-      @$data.working.splice index, 1
-    removeHistory: (index) ->
-      @$data.history.splice index, 1
+        from: target
+    move: (index, from, target) ->
+      task = @[from].splice(index, 1)[0]
+      @[target].unshift task
 
-console.log 'done'
+    focus: (target, index) ->
+      task = @[target].splice(index, 1)[0]
+      @[target].unshift task
+
+    rm: (target, index) ->
+      @[target].splice index, 1
+
+    stop: (event) ->
+      event.preventDefault()
+      console.log 'stop'

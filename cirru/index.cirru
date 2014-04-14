@@ -14,7 +14,10 @@ html
       :href png/todolist.png
       :type image/x-icon
     script
+      :src bower_components/moment/moment.js
+    script
+      :src bower_components/vue/dist/vue.js
+    script
       :defer
       :src build/build.js
-  body#app
-    @partial menu.cirru
+  @partial menu.cirru

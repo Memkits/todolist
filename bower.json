@@ -1,0 +1,25 @@
+{
+  "name": "todolist",
+  "version": "0.0.2",
+  "homepage": "https://github.com/jiyinyiyong/todolist",
+  "authors": [
+    "jiyinyiyong <jiyinyiyong@gmail.com>"
+  ],
+  "description": "personal todo list of jiyinyiyong",
+  "main": "js/menu.js",
+  "keywords": [
+    "todo"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.6.0",
+    "vue": "~0.10.3"
+  }
+}

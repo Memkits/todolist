@@ -1,6 +1,6 @@
 {
   "name": "todolist",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "personal todo list of jiyinyiyong",
   "main": "src/main.js",
   "scripts": {
@@ -22,8 +22,6 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "moment": "~2.5.1",
-    "vue": "~0.10.3",
     "cirru-html": "~0.1.7",
     "shelljs": "~0.2.6",
     "devtools-reloader-station": "0.0.4",

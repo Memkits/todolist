@@ -1,32 +1,16 @@
 
-#futures .list, #history .list {
-    padding-top: 80px;
-}
-#futures .list .task:first-child {
-}
-.list {
-    padding-bottom: 400px;
-    overflow: auto;
+#add {
+    cursor: pointer;
+    padding-left: 20px;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-.cover {
-    padding: 40px;
-    cursor: pointer;
-    flex: 1;
-}
-.cover .text {
-    font-size: 16px;
-    font-family: Papyrus;
-}
-.cover .count {
-    margin: 0px 9px;
-    font-size: 33px;
-}
 .empty {
-    padding: 176px;
     color: rgb(165, 165, 165);
     font-family: Papyrus;
     font-size: 20px;
+    padding-left: 20px;
 }
 .empty:first-letter {
     text-transform: capitalize;

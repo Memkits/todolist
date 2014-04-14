@@ -52,4 +52,3 @@ target.watch = ->
  
   station = require 'devtools-reloader-station'
   station.start()
-  console.log 'start watching'

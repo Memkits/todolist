@@ -19,4 +19,16 @@ body {
     font-family: 'MF YueYuan (Noncommercial)', Optima, 'Hiragino Sans GB';
     font-size: 17px;
     line-height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+#menu {
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    height: 100%;
 }
