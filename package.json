@@ -24,6 +24,9 @@
   "devDependencies": {
     "moment": "~2.5.1",
     "vue": "~0.10.3",
-    "cirru-html": "~0.1.4"
+    "cirru-html": "~0.1.7",
+    "shelljs": "~0.2.6",
+    "devtools-reloader-station": "0.0.4",
+    "browserify": "~3.41.0"
   }
 }

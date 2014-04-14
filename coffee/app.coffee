@@ -20,6 +20,6 @@ exports.set = (key, value) ->
   storage[key] = value
 
 window.onbeforeunload = ->
-  storage.menu = exports.menu.$data
+  storage.menu = app.menu.$data
   delete storage.edit
   localStorage.setItem 'todolist-storage', (JSON.stringify storage)

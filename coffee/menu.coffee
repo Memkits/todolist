@@ -46,3 +46,5 @@ app.menu = new Vue
       @$data.working.splice index, 1
     removeHistory: (index) ->
       @$data.history.splice index, 1
+
+console.log 'done'

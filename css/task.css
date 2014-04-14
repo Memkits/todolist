@@ -37,12 +37,15 @@
 }
 
 .handlers {
-    display: flex;
     flex-direction: row;
     justify-content: flex-end;
     position: absolute;
     top: 6px;
     right: 3px;
+    display: none;
+}
+.task:hover .handlers {
+    display: flex;
 }
 .handlers .button {
     width: 48px;

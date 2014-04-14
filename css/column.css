@@ -10,12 +10,13 @@
 }
 
 .cover {
-    padding: 10px;
+    padding: 40px;
     cursor: pointer;
     flex: 1;
 }
 .cover .text {
     font-size: 16px;
+    font-family: Papyrus;
 }
 .cover .count {
     margin: 0px 9px;
@@ -24,6 +25,8 @@
 .empty {
     padding: 176px;
     color: rgb(165, 165, 165);
+    font-family: Papyrus;
+    font-size: 20px;
 }
 .empty:first-letter {
     text-transform: capitalize;

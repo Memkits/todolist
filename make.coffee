@@ -1,29 +1,55 @@
-
+project = 'repo/todolist'
+station = undefined
+interval = interval: 300
+ 
 require 'shelljs/make'
 fs = require 'fs'
-
+browserify = require 'browserify'
 {renderer} = require 'cirru-html'
+ 
+reload = -> station?.reload project
 
-station = require 'devtools-reloader-station'
-station.start()
+compileCoffee = (name, callback) ->
+  exec "coffee -o js/ -bc coffee/#{name}", ->
+    console.log "done: coffee, compiled coffee/#{name}"
+    do callback
+ 
+target.folder = ->
+  mkdir '-p', 'cirru', 'coffee', 'js', 'build', 'css'
+  exec 'touch cirru/main.coffee css/style.css README.md'
+ 
+target.cirru = ->
+  file = 'cirru/index.cirru'
+  render = renderer (cat file), '@filename': file
+  html = render()
+  fs.writeFile 'index.html', html, 'utf8', (err) ->
+    console.log 'done: cirru'
+    do reload
 
-command = (code) -> exec code, async: yes
-
+targetBrowserify = ->
+  b = browserify ['./js/menu']
+  build = fs.createWriteStream 'build/build.js', 'utf8'
+  bundle = b.bundle(debug: yes)
+  bundle.pipe build
+  bundle.on 'end', ->
+    console.log 'done: browserify'
+    do reload
+ 
+target.js = ->
+  exec 'coffee -o js/ -bc coffee/'
+ 
+target.compile = ->
+  target.cirru()
+  exec 'coffee -o js/ -bc coffee/', ->
+    targetBrowserify()
+ 
 target.watch = ->
-  fs.watch 'coffee', interval: 300, (type, filename) ->
-    if type in ['create', 'change']
-      exec "coffee -o js/ -bc coffee/#{filename}"
-    else
-      rm "coffee/#{filename}"
-  fs.watch 'js', (type, name) ->
-    exec 'browserify -o build/build.js -d js/menu.js', ->
-      station.reload 'repo/todolist'
-
-  fs.watch 'cirru/', interval: 200, target.html
-
-target.html = ->
-    file = 'cirru/index.cirru'
-    render = renderer (cat file), '@filename': file
-    render().to 'index.html'
-    console.log 'wrote to index.html'
-    station.reload 'repo/todolist'
+  fs.watch 'cirru/', interval, target.cirru
+  fs.watch 'coffee/', interval, (type, name) ->
+    if type is 'change'
+      compileCoffee name, ->
+        do targetBrowserify
+ 
+  station = require 'devtools-reloader-station'
+  station.start()
+  console.log 'start watching'
