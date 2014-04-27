@@ -13,4 +13,4 @@ body#app
       .category.done (:v-on "click: (view='done')")
         span.count $ :v-model done.length
         = done
-    #list (@partial now.cirru) (@partial work.cirru) (@partial my.cirru) $ @partial done.cirru
+    #list (@partial now.cirru) (@partial my.cirru) $ @partial done.cirru
