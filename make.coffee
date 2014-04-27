@@ -1,23 +1,43 @@
+
 project = 'repo/todolist'
-station = undefined
 interval = interval: 300
- 
+watch = no
+
 require 'shelljs/make'
 fs = require 'fs'
+station = require 'devtools-reloader-station'
 browserify = require 'browserify'
+exorcist = require 'exorcist'
 {renderer} = require 'cirru-html'
- 
-reload = -> station?.reload project
+
+startTime = (new Date).getTime()
+process.on 'exit', ->
+  now = (new Date).getTime()
+  duration = (now - startTime) / 1000
+  console.log "\nfinished in #{duration}s"
+
+reload = -> station.reload project if watch
 
 compileCoffee = (name, callback) ->
   exec "coffee -o js/ -bc coffee/#{name}", ->
     console.log "done: coffee, compiled coffee/#{name}"
     do callback
- 
+
+packJS = ->
+  bundle = browserify ['./js/main']
+  .bundle debug: yes
+  bundle.pipe (exorcist 'build/build.js.map')
+  .pipe (fs.createWriteStream 'build/build.js', 'utf8')
+  bundle.on 'end', ->
+    console.log 'done: browserify'
+    do reload
+
 target.folder = ->
   mkdir '-p', 'cirru', 'coffee', 'js', 'build', 'css'
-  exec 'touch cirru/main.coffee css/style.css README.md'
- 
+  exec 'touch cirru/index.cirru css/style.css'
+  exec 'touch coffee/main.coffee'
+  exec 'touch README.md .gitignore .npmignore'
+
 target.cirru = ->
   file = 'cirru/index.cirru'
   render = renderer (cat file), '@filename': file
@@ -26,29 +46,20 @@ target.cirru = ->
     console.log 'done: cirru'
     do reload
 
-targetBrowserify = ->
-  b = browserify ['./js/menu']
-  build = fs.createWriteStream 'build/build.js', 'utf8'
-  bundle = b.bundle(debug: yes)
-  bundle.pipe build
-  bundle.on 'end', ->
-    console.log 'done: browserify'
-    do reload
- 
 target.js = ->
   exec 'coffee -o js/ -bc coffee/'
- 
+
 target.compile = ->
   target.cirru()
   exec 'coffee -o js/ -bc coffee/', ->
-    targetBrowserify()
- 
+    packJS()
+
 target.watch = ->
+  watch = yes
   fs.watch 'cirru/', interval, target.cirru
   fs.watch 'coffee/', interval, (type, name) ->
     if type is 'change'
       compileCoffee name, ->
-        do targetBrowserify
- 
-  station = require 'devtools-reloader-station'
+        do packJS
+
   station.start()
