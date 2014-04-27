@@ -2,44 +2,45 @@
 try
   storage = JSON.parse (localStorage.getItem 'todolist')
 window.onbeforeunload = ->
-  localStorage.setItem 'todolist', (JSON.stringify storage)
+  localStorage.setItem 'todolist', (JSON.stringify app.$data)
 
-Vue.directive 'focus-editable',
-  bind: -> setTimeout =>
+focusTo = (target) ->
+  setTimeout ->
     range = document.createRange()
     sel = window.getSelection()
-    target = @el
     range.setStartBefore target
     range.setEndAfter target
     sel.removeAllRanges();
     sel.addRange(range);
-    @el.focus()
+    target.focus()
+    console.log target
 
-menu = new Vue
+app = menu = new Vue
   el: '#menu'
   data:
-    now: storage.now or []
-    my: storage.my or []
-    work: storage.work or []
+    doing: storage.doing or []
+    todo: storage.todo or []
     done: storage.done or []
-    view: storage.view or 'my'
+    view: storage.view or 'doing'
   computed: {}
   methods:
-    newIn: (target) ->
-      @[target].unshift
+    add: ->
+      @todo.unshift
         title: ''
         content: ''
-        from: target
-    move: (index, from, target) ->
-      task = @[from].splice(index, 1)[0]
+
+      focusTo document.querySelector('#todo .title')
+
+    move: (index, target) ->
+      task = @[@view].splice(index, 1)[0]
       @[target].unshift task
 
-    focus: (target, index) ->
-      task = @[target].splice(index, 1)[0]
-      @[target].unshift task
+    focus: (index) ->
+      task = @[@view].splice(index, 1)[0]
+      @[@view].unshift task
 
-    rm: (target, index) ->
-      @[target].splice index, 1
+    rm: (index) ->
+      @[@view].splice index, 1
 
     stop: (event) ->
       event.preventDefault()

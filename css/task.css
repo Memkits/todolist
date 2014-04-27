@@ -3,10 +3,11 @@
     padding: 0 20px;
     position: relative;
     height: 80px;
+    margin-bottom: 1em;
 }
 .task .title {
-    box-shadow: 0px 1px 0 rgb(187, 187, 187);
-    font-size: 18px;
+    box-shadow: 0px 1px 0 rgba(116, 116, 116, 0.37);
+    font-size: 17px;
 }
 .task .content {
     color: lightgrey;
@@ -16,7 +17,7 @@
     display: block;
     line-height: 2em;
     border: none;
-    width: 80%;
+    width: 100%;
     outline: none;
     background-color: transparent;
 }
@@ -57,6 +58,6 @@
     outline: none;
 }
 
-#now .task:first-child {
-    background: rgb(236, 235, 235);
+#doing .task:first-child {
+    box-shadow: -1px 0 0 rgb(187, 187, 255);
 }

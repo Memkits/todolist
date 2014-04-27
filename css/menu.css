@@ -1,35 +1,45 @@
 
 #sidebar {
     width: 240px;
-    font-family: Papyrus;
-    margin-right: 60px;
+    font-family: "Helvetica Neue";
+    margin-right: 20px;
+    padding-top: 4em;
+    font-weight: 100;
 }
 
 #sidebar .category {
     cursor: pointer;
-    line-height: 2em;
-    font-size: 20px;
+    line-height: 1.5em;
+    font-size: 30px;
     margin: 0;
     -webkit-user-select: none;
+    padding: 10px 5px;
 }
 
 #sidebar .count {
     display: inline-block;
-    width: 60px;
     text-align: center;
-    font-size: 30px;
+    font-size: 39px;
+    min-width: 60px;
 }
 
 #sidebar .category:hover,
-#sidebar.view-now .now,
-#sidebar.view-my .my,
-#sidebar.view-work .work,
+#sidebar.view-doing .doing,
+#sidebar.view-todo .todo,
 #sidebar.view-done .done {
-    background: rgb(235, 235, 235);
+    box-shadow: 1px 0 0 rgb(211, 182, 255);
+}
+
+#sidebar .done {
+    font-size: 24px;
+}
+#sidebar .done .count {
+    font-size: 26px;
 }
 
 #list {
     height: 100%;
     overflow: auto;
     flex: 1;
+    padding: 2em 0 10em 1px;
 }

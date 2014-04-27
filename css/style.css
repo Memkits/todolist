@@ -12,11 +12,15 @@ body {
     margin: 0;
 }
 
+body, input {
+    font-family: 'MF YueYuan (Noncommercial)', Optima, 'Hiragino Sans GB';
+    font-weight: lighter;
+}
+
 #app {
     position: absolute;
     width: 100%;
     height: 100%;
-    font-family: 'MF YueYuan (Noncommercial)', Optima, 'Hiragino Sans GB';
     font-size: 17px;
     line-height: 40px;
     display: flex;
