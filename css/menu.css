@@ -2,9 +2,9 @@
 #sidebar {
     width: 240px;
     font-family: "Helvetica Neue";
-    margin-right: 20px;
     padding-top: 4em;
     font-weight: 100;
+    padding-left: 1px;
 }
 
 #sidebar .category {
@@ -27,7 +27,7 @@
 #sidebar.view-doing .doing,
 #sidebar.view-todo .todo,
 #sidebar.view-done .done {
-    box-shadow: 1px 0 0 rgb(211, 182, 255);
+    box-shadow: -1px 0 0 rgb(211, 182, 255);
 }
 
 #sidebar .done {

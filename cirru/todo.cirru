@@ -7,14 +7,14 @@
     input.content $ :v-model content
     .handlers
       span.button
-        :v-on "click: focus($index)"
-        = Focus
+        :v-on "click: move($index,'doing')"
+        = Do
       span.button
         :v-on "click: move($index,'done')"
         = Done
       span.button
-        :v-on "click: move($index,'doing')"
-        = Do
+        :v-on "click: focus($index)"
+        = Focus
       span.button.remove
         :v-on "click: rm($index)"
         = Del
