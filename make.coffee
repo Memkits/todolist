@@ -1,4 +1,4 @@
-
+#!/usr/bin/env coffee
 project = 'repo/todolist'
 
 require 'shelljs/make'
@@ -20,6 +20,8 @@ target.folder = ->
 target.coffee = ->
   mission.coffee
     find: /\.coffee$/, from: 'coffee/', to: 'js/', extname: '.js'
+    options:
+      bare: yes
 
 cirru = ->
   mission.cirru
@@ -51,6 +53,8 @@ target.watch = ->
           filepath = path.relative 'coffee/', filepath
           mission.coffee
             file: filepath, from: 'coffee/', to: 'js/', extname: '.js'
+            options:
+              bare: yes
           browserify ->
             station.reload project
 

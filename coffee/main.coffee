@@ -1,8 +1,6 @@
 
 try
   storage = JSON.parse (localStorage.getItem 'todolist')
-window.onbeforeunload = ->
-  localStorage.setItem 'todolist', (JSON.stringify app.$data)
 
 focusTo = (target) ->
   setTimeout ->
@@ -45,3 +43,12 @@ app = menu = new Vue
     stop: (event) ->
       event.preventDefault()
       console.log 'stop'
+
+save = ->
+  localStorage.setItem 'todolist', (JSON.stringify app.$data)
+window.onbeforeunload = save
+window.addEventListener 'keydown', (event) ->
+  if event.keyCode is 83
+    if event.ctrlKey or event.metaKey
+      save()
+      event.preventDefault()
