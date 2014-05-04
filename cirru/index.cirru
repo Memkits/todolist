@@ -1,3 +1,4 @@
+
 doctype
 
 html
@@ -5,7 +6,9 @@ html
     title $ = Todo List
     meta $ :charset utf-8
     link (:rel stylesheet) $ :href: css/style.css
-    link (:rel icon) (:href png/todolist.png) $ :type image/x-icon
+    link (:rel icon)
+      :href png/todolist.png
+      :type image/x-icon
     script $ :src bower_components/vue/dist/vue.js
     script (:defer) $ :src build/main.js
   @partial menu.cirru
