@@ -3,15 +3,13 @@ try
   storage = JSON.parse (localStorage.getItem 'todolist')
 
 focusTo = (target) ->
-  setTimeout ->
-    range = document.createRange()
-    sel = window.getSelection()
-    range.setStartBefore target
-    range.setEndAfter target
-    sel.removeAllRanges();
-    sel.addRange(range);
-    target.focus()
-    console.log target
+  range = document.createRange()
+  sel = window.getSelection()
+  range.setStartBefore target
+  range.setEndAfter target
+  sel.removeAllRanges();
+  sel.addRange(range);
+  target.focus()
 
 app = menu = new Vue
   el: '#menu'
@@ -26,8 +24,8 @@ app = menu = new Vue
       @todo.unshift
         title: ''
         content: ''
-
-      focusTo document.querySelector('#todo .title')
+      setTimeout ->
+        focusTo document.querySelector('#todo .title')
 
     move: (index, target) ->
       task = @[@view].splice(index, 1)[0]
