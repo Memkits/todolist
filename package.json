@@ -22,10 +22,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "cirru-html": "~0.1.7",
     "shelljs": "~0.2.6",
-    "devtools-reloader-station": "0.0.4",
-    "browserify": "~3.41.0",
-    "exorcist": "~0.1.6"
+    "mission": "0.0.1-1"
   }
 }

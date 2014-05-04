@@ -7,5 +7,5 @@ html
     link (:rel stylesheet) $ :href: css/style.css
     link (:rel icon) (:href png/todolist.png) $ :type image/x-icon
     script $ :src bower_components/vue/dist/vue.js
-    script (:defer) $ :src build/build.js
+    script (:defer) $ :src build/main.js
   @partial menu.cirru
