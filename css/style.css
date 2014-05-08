@@ -1,6 +1,5 @@
 
 @import url('menu.css');
-@import url('record.css');
 @import url('task.css');
 @import url('column.css');
 
@@ -18,13 +17,8 @@ body, input {
 }
 
 #app {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     font-size: 17px;
     line-height: 40px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: stretch;
+    max-width: 960px;
+    margin: 0px auto;
 }

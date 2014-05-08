@@ -1,6 +1,6 @@
 
 #done (:v-if view=='done')
-  .record (:v-repeat done)
+  .task (:v-repeat done)
     .title $ :v-model "$value"
     .handlers $ span.button.remove
       :v-on "click:rm($index)"

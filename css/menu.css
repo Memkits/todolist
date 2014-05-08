@@ -1,10 +1,10 @@
 
 #navbar {
-    width: 240px;
     font-family: "Helvetica Neue";
-    padding-top: 4em;
     font-weight: 100;
     padding-left: 1px;
+    display: flex;
+    flex-direction: row;
 }
 
 #navbar .category {
@@ -14,6 +14,7 @@
     margin: 0;
     -webkit-user-select: none;
     padding: 10px 5px;
+    flex: 1;
 }
 
 #navbar .count {
@@ -27,7 +28,7 @@
 #navbar.view-doing .doing,
 #navbar.view-todo .todo,
 #navbar.view-done .done {
-    box-shadow: -1px 0 0 rgb(211, 182, 255);
+    box-shadow: 0px 1px 0 rgb(211, 182, 255);
 }
 
 #navbar .done {
@@ -38,8 +39,7 @@
 }
 
 #list {
-    height: 100%;
-    overflow: auto;
     flex: 1;
     padding: 2em 0 10em 1px;
+    line-height: 2em;
 }
