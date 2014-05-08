@@ -8,10 +8,6 @@
     box-shadow: 0px 1px 0 rgba(194, 194, 194, 0.37);
     font-size: 16px;
 }
-.task .content {
-    color: lightgrey;
-    font-size: 14px;
-}
 .task input {
     display: block;
     line-height: 2em;

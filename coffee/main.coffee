@@ -11,8 +11,8 @@ focusTo = (target) ->
   sel.addRange(range);
   target.focus()
 
-app = menu = new Vue
-  el: '#menu'
+app = new Vue
+  el: '#app'
   data:
     doing: storage.doing or []
     todo: storage.todo or []
@@ -21,9 +21,7 @@ app = menu = new Vue
   computed: {}
   methods:
     add: ->
-      @todo.unshift
-        title: ''
-        content: ''
+      @todo.unshift ''
       setTimeout ->
         focusTo document.querySelector('#todo .title')
 
@@ -45,8 +43,4 @@ app = menu = new Vue
 save = ->
   localStorage.setItem 'todolist', (JSON.stringify app.$data)
 window.onbeforeunload = save
-window.addEventListener 'keydown', (event) ->
-  if event.keyCode is 83
-    if event.ctrlKey or event.metaKey
-      save()
-      event.preventDefault()
+window.onblur = save

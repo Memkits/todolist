@@ -1,5 +1,5 @@
 
-#sidebar {
+#navbar {
     width: 240px;
     font-family: "Helvetica Neue";
     padding-top: 4em;
@@ -7,7 +7,7 @@
     padding-left: 1px;
 }
 
-#sidebar .category {
+#navbar .category {
     cursor: pointer;
     line-height: 1.5em;
     font-size: 30px;
@@ -16,24 +16,24 @@
     padding: 10px 5px;
 }
 
-#sidebar .count {
+#navbar .count {
     display: inline-block;
     text-align: center;
     font-size: 39px;
     min-width: 60px;
 }
 
-#sidebar .category:hover,
-#sidebar.view-doing .doing,
-#sidebar.view-todo .todo,
-#sidebar.view-done .done {
+#navbar .category:hover,
+#navbar.view-doing .doing,
+#navbar.view-todo .todo,
+#navbar.view-done .done {
     box-shadow: -1px 0 0 rgb(211, 182, 255);
 }
 
-#sidebar .done {
+#navbar .done {
     font-size: 24px;
 }
-#sidebar .done .count {
+#navbar .done .count {
     font-size: 26px;
 }
 

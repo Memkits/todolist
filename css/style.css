@@ -28,11 +28,3 @@ body, input {
     justify-content: space-around;
     align-items: stretch;
 }
-
-#menu {
-    width: 1000px;
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    height: 100%;
-}

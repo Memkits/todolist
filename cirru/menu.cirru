@@ -1,6 +1,6 @@
 
-body#app $ #menu
-  #sidebar (:class view-{{view}})
+body#app
+  #navbar (:class view-{{view}})
     .category.doing
       :v-on "click: view='doing'"
       span.count $ :v-model doing.length
@@ -13,6 +13,10 @@ body#app $ #menu
       :v-on "click: (view='done')"
       span.count $ :v-model done.length
       = done
+    .category.add
+      #add (:v-on "click: add()")
+        :v-if "view != 'done'"
+        = +
   #list (@partial doing.cirru)
     @partial todo.cirru
     @partial done.cirru
